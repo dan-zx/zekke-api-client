@@ -1,0 +1,30 @@
+subprojects {
+    apply plugin: 'java'
+
+    group 'com.github.danzx.zekke'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    [compileJava, compileTestJava]*.options*.compilerArgs = ['-Xlint']
+
+    repositories {
+        mavenCentral()
+    }
+
+    ext {
+        assertjVersion     = '2.8.0'
+        junitVersion       = '4.12'
+        junitParamsVersion = '1.1.0'
+    }
+
+    dependencies {
+        testCompile "junit:junit:${junitVersion}"
+        testCompile "org.assertj:assertj-core:${assertjVersion}"
+        testCompile "pl.pragmatists:JUnitParams:${junitParamsVersion}"
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.0.2'
+}
