@@ -5,6 +5,7 @@ bin/
 .gradle/
 *.class
 dist/
+out/
 
 # Eclipse project files
 .classpath
