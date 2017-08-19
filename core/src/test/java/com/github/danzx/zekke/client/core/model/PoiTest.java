@@ -65,11 +65,11 @@ public class PoiTest {
     }
 
     private static Poi newPoi() {
-        Poi Poi = new Poi();
-        Poi.setId(1L);
-        Poi.setName("aPoi");
-        Poi.setLocation(newCoordinates(48.125, 109.27));
-        return Poi;
+        Poi poi = new Poi();
+        poi.setId(1L);
+        poi.setName("aPoi");
+        poi.setLocation(newCoordinates(48.125, 109.27));
+        return poi;
     }
 
     private static Coordinates newCoordinates(double lat, double lng) {

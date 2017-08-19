@@ -61,10 +61,10 @@ public class WalkwayTest {
     }
 
     private static Walkway newWalkway() {
-        Walkway Walkway = new Walkway();
-        Walkway.setId(1L);
-        Walkway.setLocation(newCoordinates(48.125, 109.27));
-        return Walkway;
+        Walkway walkway = new Walkway();
+        walkway.setId(1L);
+        walkway.setLocation(newCoordinates(48.125, 109.27));
+        return walkway;
     }
 
     private static Coordinates newCoordinates(double lat, double lng) {
