@@ -1,6 +1,10 @@
 ZeKKe REST API Client
 =====================
 
+[![Coverage](https://codecov.io/gh/dan-zx/zekke-api-client/branch/develop/graph/badge.svg)](https://codecov.io/gh/dan-zx/zekke-api-client)
+[![Build Status](https://travis-ci.org/dan-zx/zekke-api-client.svg?branch=develop)](https://travis-ci.org/dan-zx/zekke-api-client)
+[![License](https://img.shields.io/badge/licence-Apache_Licence_2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+
 License
 -------
 
