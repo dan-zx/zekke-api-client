@@ -1,0 +1,8 @@
+{
+  "statusCode": 500,
+  "errorDetail": "Generic error",
+  "errorType": "SERVER_ERROR",
+  "paramErrors": {
+    "arg0": "error0"
+  }
+}
