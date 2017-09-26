@@ -52,13 +52,11 @@ public abstract class HttpMockTest {
 
     @Before
     public void onBeforeEachTest() {
-        mockHttpClient = new HttpClient();
-        mockHttpClient.setBaseUrl(mockServerUrl);
-        mockHttpClient.setHttpClient(
-                new OkHttpClient.Builder()
-                        .addInterceptor(LOGGING_INTERCEPTOR)
-                        .readTimeout(1, TimeUnit.SECONDS)
-                        .build());
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(LOGGING_INTERCEPTOR)
+                .readTimeout(1, TimeUnit.SECONDS)
+                .build();
+        mockHttpClient = new HttpClient(okHttpClient, mockServerUrl);
     }
 
     @After

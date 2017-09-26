@@ -1,40 +1,43 @@
 package com.github.danzx.zekke.client.http;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import com.github.danzx.zekke.client.core.exception.ApiErrorDetail;
 import com.github.danzx.zekke.client.core.exception.ApiException;
 import com.github.danzx.zekke.client.util.Charset;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.Locale;
 
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+import static java.util.Objects.requireNonNull;
+
 public class HttpClient {
 
-    private static final HttpUrl DEFAULT_BASE_URL = HttpUrl.parse("http://localhost:8080");
-    private static final OkHttpClient DEFAULT_HTTP_CLIENT = new OkHttpClient();
-
     private final Gson gson;
-    private OkHttpClient httpClient;
-    private HttpUrl baseUrl;
+    private final OkHttpClient httpClient;
+    private final HttpUrl baseUrl;
 
-    public HttpClient() {
+    public HttpClient(OkHttpClient httpClient, HttpUrl baseUrl) {
+        this.httpClient = requireNonNull(httpClient);
+        this.baseUrl = requireNonNull(baseUrl);
         gson = new Gson();
     }
 
     public HttpUrl.Builder newBaseBuilder() {
-        return getBaseUrl().newBuilder();
+        return baseUrl.newBuilder();
     }
 
     public <T> T doGetForJson(Request request, TypeToken<T> type) {
         Response response = null;
         try {
-            response = getHttpClient().newCall(request).execute();
+            response = httpClient.newCall(request).execute();
             if (response.body().contentLength() == 0L) throw new HttpResponseBodyException("Expecting to have response with body");
             return parseResponse(response, type);
         } catch (SocketTimeoutException ex) {
@@ -65,21 +68,5 @@ public class HttpClient {
                 .header(Header.ACCEPT.toString(), ContentType.APPLICATION_JSON.getValue())
                 .header(Header.ACCEPT_LANGUAGE.toString(), Locale.getDefault().getLanguage())
                 .header(Header.ACCEPT_CHARSET.toString(), Charset.UTF_8.toString());
-    }
-
-    private OkHttpClient getHttpClient() {
-        return httpClient != null ? httpClient : DEFAULT_HTTP_CLIENT;
-    }
-
-    public void setHttpClient(OkHttpClient httpClient) {
-        this.httpClient = httpClient;
-    }
-
-    private HttpUrl getBaseUrl() {
-        return baseUrl != null ? baseUrl : DEFAULT_BASE_URL;
-    }
-
-    public void setBaseUrl(HttpUrl baseUrl) {
-        this.baseUrl = baseUrl;
     }
 }

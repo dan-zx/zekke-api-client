@@ -11,57 +11,53 @@ import com.github.danzx.zekke.client.query.impl.http.ManyNearWaypointsHttpQuery;
 import com.github.danzx.zekke.client.query.impl.http.ManyPoisHttpQuery;
 import com.github.danzx.zekke.client.query.impl.http.ManyWaypointsHttpQuery;
 
+import static java.util.Objects.requireNonNull;
+
 public class ZekkeHttpApiClient extends BaseZekkeApiClient {
 
-    private static final HttpClient DEFAULT_HTTP_CLIENT = new HttpClient();
+    private final HttpClient httpClient;
 
-    private HttpClient httpClient;
+    public ZekkeHttpApiClient(HttpClient httpClient) {
+        this.httpClient = requireNonNull(httpClient);
+    }
 
     @Override
     public AnonymouslyAuthenticationHttpQuery authenticateAnonymously() {
-        return new AnonymouslyAuthenticationHttpQuery(getHttpClient());
+        return new AnonymouslyAuthenticationHttpQuery(httpClient);
     }
 
     @Override
     public AdminAuthenticationHttpQuery authenticateAdmin(String userId, String password) {
-        return new AdminAuthenticationHttpQuery(getHttpClient(), userId, password);
+        return new AdminAuthenticationHttpQuery(httpClient, userId, password);
     }
 
     @Override
     public ManyWaypointsHttpQuery<TypedWaypoint> waypoints() {
-        return new ManyWaypointsHttpQuery<>(TypedWaypoint.class, getHttpClient(), getTokenHolder());
+        return new ManyWaypointsHttpQuery<>(TypedWaypoint.class, httpClient, getTokenHolder());
     }
 
     @Override
     public ManyWaypointsHttpQuery<Walkway> walkways() {
-        return new ManyWaypointsHttpQuery<>(Walkway.class, getHttpClient(), getTokenHolder());
+        return new ManyWaypointsHttpQuery<>(Walkway.class, httpClient, getTokenHolder());
     }
 
     @Override
     public ManyPoisHttpQuery pois() {
-        return new ManyPoisHttpQuery(getHttpClient(), getTokenHolder());
+        return new ManyPoisHttpQuery(httpClient, getTokenHolder());
     }
 
     @Override
     public ManyNearWaypointsHttpQuery<TypedWaypoint> waypointsNear(Coordinates location) {
-        return new ManyNearWaypointsHttpQuery<>(TypedWaypoint.class, getHttpClient(), location, getTokenHolder());
+        return new ManyNearWaypointsHttpQuery<>(TypedWaypoint.class, httpClient, location, getTokenHolder());
     }
 
     @Override
     public ManyNearWaypointsHttpQuery<Walkway> walkwaysNear(Coordinates location) {
-        return new ManyNearWaypointsHttpQuery<>(Walkway.class, getHttpClient(), location, getTokenHolder());
+        return new ManyNearWaypointsHttpQuery<>(Walkway.class, httpClient, location, getTokenHolder());
     }
 
     @Override
     public ManyNearWaypointsHttpQuery<Poi> poisNear(Coordinates location) {
-        return new ManyNearWaypointsHttpQuery<>(Poi.class, getHttpClient(), location, getTokenHolder());
-    }
-
-    public HttpClient getHttpClient() {
-        return httpClient == null ? DEFAULT_HTTP_CLIENT : httpClient;
-    }
-
-    public void setHttpClient(HttpClient httpClient) {
-        this.httpClient = httpClient;
+        return new ManyNearWaypointsHttpQuery<>(Poi.class, httpClient, location, getTokenHolder());
     }
 }

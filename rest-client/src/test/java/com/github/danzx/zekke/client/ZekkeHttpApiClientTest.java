@@ -5,8 +5,8 @@ import com.github.danzx.zekke.client.core.exception.ApiException;
 import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
 import com.github.danzx.zekke.client.http.HttpRequestException;
 import com.github.danzx.zekke.client.http.HttpResponseBodyException;
-import com.github.danzx.zekke.client.test.ResponseFile;
 import com.github.danzx.zekke.client.test.HttpMockTest;
+import com.github.danzx.zekke.client.test.ResponseFile;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,8 +27,7 @@ public class ZekkeHttpApiClientTest extends HttpMockTest {
     @Override
     public void onBeforeEachTest() {
         super.onBeforeEachTest();
-        client = new ZekkeHttpApiClient();
-        client.setHttpClient(getMockHttpClient());
+        client = new ZekkeHttpApiClient(getMockHttpClient());
     }
 
     @Test
