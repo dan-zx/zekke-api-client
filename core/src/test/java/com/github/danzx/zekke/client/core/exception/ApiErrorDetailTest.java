@@ -16,6 +16,7 @@
 package com.github.danzx.zekke.client.core.exception;
 
 import com.github.danzx.zekke.client.core.exception.ApiErrorDetail.ErrorType;
+
 import org.junit.Test;
 
 import static java.util.Collections.singletonMap;

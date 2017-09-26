@@ -3,10 +3,11 @@ package com.github.danzx.zekke.client.query.impl.http.rx;
 import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
 import com.github.danzx.zekke.client.query.Query;
 import com.github.danzx.zekke.client.query.impl.http.AuthenticationHttpQuery;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 
 import java.util.concurrent.Callable;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 
 public class AuthenticationHttpQueryRxWrapper implements Query<Observable<AccessTokenHolder>> {
 

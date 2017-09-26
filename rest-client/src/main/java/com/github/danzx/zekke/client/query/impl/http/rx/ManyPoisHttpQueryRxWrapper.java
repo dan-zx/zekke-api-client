@@ -5,11 +5,12 @@ import com.github.danzx.zekke.client.core.model.Poi;
 import com.github.danzx.zekke.client.query.ManyPoisOptions;
 import com.github.danzx.zekke.client.query.Query;
 import com.github.danzx.zekke.client.query.impl.http.ManyPoisHttpQuery;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 
 import java.util.List;
 import java.util.concurrent.Callable;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 
 public class ManyPoisHttpQueryRxWrapper implements ManyPoisOptions, Query<Observable<Poi>> {
 

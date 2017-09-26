@@ -6,9 +6,10 @@ import com.github.danzx.zekke.client.core.model.Poi;
 import com.github.danzx.zekke.client.http.HttpClient;
 import com.github.danzx.zekke.client.query.ManyPoisOptions;
 import com.github.danzx.zekke.client.query.Query;
-import okhttp3.HttpUrl;
 
 import java.util.List;
+
+import okhttp3.HttpUrl;
 
 public class ManyPoisHttpQuery extends ManyWaypointsHttpQuery<Poi> implements ManyPoisOptions, Query<List<Poi>> {
 

@@ -5,11 +5,12 @@ import com.github.danzx.zekke.client.core.model.Coordinates;
 import com.github.danzx.zekke.client.query.ManyNearWaypointsOptions;
 import com.github.danzx.zekke.client.query.Query;
 import com.github.danzx.zekke.client.query.impl.http.ManyNearWaypointsHttpQuery;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 
 import java.util.List;
 import java.util.concurrent.Callable;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 
 public class ManyNearWaypointsHttpQueryRxWrapper<W extends BaseWaypoint> implements ManyNearWaypointsOptions, Query<Observable<W>> {
 

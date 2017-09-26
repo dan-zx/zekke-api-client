@@ -1,5 +1,5 @@
-import org.slf4j.bridge.SLF4JBridgeHandler
 import ch.qos.logback.classic.jul.LevelChangePropagator
+import org.slf4j.bridge.SLF4JBridgeHandler
 
 def lcp = new LevelChangePropagator()
 lcp.context = context

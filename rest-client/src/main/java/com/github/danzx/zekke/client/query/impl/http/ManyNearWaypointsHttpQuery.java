@@ -1,5 +1,7 @@
 package com.github.danzx.zekke.client.query.impl.http;
 
+import com.google.gson.reflect.TypeToken;
+
 import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
 import com.github.danzx.zekke.client.core.model.BaseWaypoint;
 import com.github.danzx.zekke.client.core.model.Coordinates;
@@ -9,12 +11,12 @@ import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpClient;
 import com.github.danzx.zekke.client.query.ManyNearWaypointsOptions;
 import com.github.danzx.zekke.client.query.Query;
-import com.google.gson.reflect.TypeToken;
-import okhttp3.HttpUrl;
-import okhttp3.Request;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.HttpUrl;
+import okhttp3.Request;
 
 import static java.util.Objects.requireNonNull;
 

@@ -5,11 +5,12 @@ import com.github.danzx.zekke.client.core.model.BoundingBox;
 import com.github.danzx.zekke.client.query.ManyWaypointsOptions;
 import com.github.danzx.zekke.client.query.Query;
 import com.github.danzx.zekke.client.query.impl.http.ManyWaypointsHttpQuery;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 
 import java.util.List;
 import java.util.concurrent.Callable;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 
 public class ManyWaypointsHttpQueryRxWrapper<W extends BaseWaypoint> implements ManyWaypointsOptions, Query<Observable<W>> {
 
