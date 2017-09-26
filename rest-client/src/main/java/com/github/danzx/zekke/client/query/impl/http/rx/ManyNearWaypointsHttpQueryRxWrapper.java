@@ -36,13 +36,13 @@ public class ManyNearWaypointsHttpQueryRxWrapper<W extends BaseWaypoint> impleme
     }
 
     @Override
-    public ManyNearWaypointsHttpQueryRxWrapper atMostDistance(int distance) {
+    public ManyNearWaypointsHttpQueryRxWrapper<W> atMostDistance(int distance) {
         httpQuery.atMostDistance(distance);
         return this;
     }
 
     @Override
-    public ManyNearWaypointsHttpQueryRxWrapper limit(int limit) {
+    public ManyNearWaypointsHttpQueryRxWrapper<W> limit(int limit) {
         httpQuery.limit(limit);
         return this;
     }

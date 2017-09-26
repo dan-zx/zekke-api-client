@@ -36,7 +36,7 @@ public class ManyWaypointsHttpQueryRxWrapper<W extends BaseWaypoint> implements 
     }
 
     @Override
-    public ManyWaypointsHttpQueryRxWrapper enclosedInRectangle(BoundingBox bbox) {
+    public ManyWaypointsHttpQueryRxWrapper<W> enclosedInRectangle(BoundingBox bbox) {
         httpQuery.enclosedInRectangle(bbox);
         return this;
     }

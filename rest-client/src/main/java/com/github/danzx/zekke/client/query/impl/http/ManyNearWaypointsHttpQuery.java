@@ -56,13 +56,13 @@ public class ManyNearWaypointsHttpQuery<W extends BaseWaypoint> extends HttpQuer
     }
 
     @Override
-    public ManyNearWaypointsHttpQuery atMostDistance(int distance) {
+    public ManyNearWaypointsHttpQuery<W> atMostDistance(int distance) {
         optionsBuilder.atMostDistance(distance);
         return this;
     }
 
     @Override
-    public ManyNearWaypointsHttpQuery limit(int limit) {
+    public ManyNearWaypointsHttpQuery<W> limit(int limit) {
         optionsBuilder.limit(limit);
         return this;
     }

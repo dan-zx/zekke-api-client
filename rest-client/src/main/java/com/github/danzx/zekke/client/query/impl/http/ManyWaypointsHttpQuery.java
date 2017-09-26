@@ -54,7 +54,7 @@ public class ManyWaypointsHttpQuery<W extends BaseWaypoint> extends HttpQuery<Li
     }
 
     @Override
-    public ManyWaypointsHttpQuery enclosedInRectangle(BoundingBox bbox) {
+    public ManyWaypointsHttpQuery<W> enclosedInRectangle(BoundingBox bbox) {
         optionsBuilder.enclosedInRectangle(bbox);
         return this;
     }
