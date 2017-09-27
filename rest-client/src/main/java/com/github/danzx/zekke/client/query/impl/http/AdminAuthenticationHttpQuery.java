@@ -1,6 +1,5 @@
 package com.github.danzx.zekke.client.query.impl.http;
 
-import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
 import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpClient;
 import com.github.danzx.zekke.client.util.Base64;
@@ -22,11 +21,6 @@ public class AdminAuthenticationHttpQuery extends AuthenticationHttpQuery {
         super(httpClient);
         this.userId = requireNonNull(userId);
         this.password = requireNonNull(password);
-    }
-
-    @Override
-    public AccessTokenHolder get() {
-        return getHttpClient().doGetForJson(buildRequest(), getTypeToken());
     }
 
     @Override

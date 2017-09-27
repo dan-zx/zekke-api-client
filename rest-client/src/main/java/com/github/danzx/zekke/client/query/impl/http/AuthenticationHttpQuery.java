@@ -10,11 +10,8 @@ import okhttp3.HttpUrl;
 
 public abstract class AuthenticationHttpQuery extends HttpQuery<AccessTokenHolder> implements Query<AccessTokenHolder> {
 
-    private final TypeToken<AccessTokenHolder> typeToken;
-
     protected AuthenticationHttpQuery(HttpClient httpClient) {
-        super(httpClient);
-        typeToken = TypeToken.get(AccessTokenHolder.class);
+        super(httpClient, TypeToken.get(AccessTokenHolder.class));
     }
 
     @Override
@@ -23,9 +20,5 @@ public abstract class AuthenticationHttpQuery extends HttpQuery<AccessTokenHolde
                 .addPathSegment(ApiUrlParts.PathSegments.AUTHENTICATION)
                 .addPathSegment(ApiUrlParts.PathSegments.JWT)
                 .build();
-    }
-
-    protected TypeToken<AccessTokenHolder> getTypeToken() {
-        return typeToken;
     }
 }

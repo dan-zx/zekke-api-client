@@ -23,22 +23,15 @@ import static java.util.Objects.requireNonNull;
 public class ManyWaypointsHttpQuery<W extends BaseWaypoint> extends HttpQuery<List<W>> implements ManyWaypointsOptions, Query<List<W>> {
 
     private final Class<W> waypointClass;
-    private final TypeToken<List<W>> typeToken;
     private final ManyWaypointsOptions.Builder optionsBuilder;
     private final AccessTokenHolder tokenHolder;
 
     @SuppressWarnings("unchecked")
     public ManyWaypointsHttpQuery(Class<W> waypointClass, HttpClient httpClient, AccessTokenHolder tokenHolder) {
-        super(httpClient);
+        super(httpClient, (TypeToken<List<W>>) TypeToken.getParameterized(ArrayList.class, waypointClass).getType());
         this.waypointClass = requireNonNull(waypointClass);
         this.tokenHolder = requireNonNull(tokenHolder);
         optionsBuilder = new ManyWaypointsOptions.Builder();
-        typeToken = (TypeToken<List<W>>) TypeToken.getParameterized(ArrayList.class, this.waypointClass).getType();
-    }
-
-    @Override
-    public List<W> get() {
-        return getHttpClient().doGetForJson(buildRequest(), typeToken);
     }
 
     @Override
