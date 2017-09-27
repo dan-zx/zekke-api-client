@@ -1,7 +1,8 @@
 package com.github.danzx.zekke.client.test;
 
+import com.github.danzx.zekke.client.http.ContentType;
+import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpStatus;
-import com.github.danzx.zekke.client.http.MediaTypes;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +14,6 @@ public enum ResponseFile {
     GENERIC_ERROR("generic_error.json", HttpStatus.INTERNAL_SERVER_ERROR);
 
     private static final String LOCATION_PREFIX = "/responses/";
-    private static final String CONTENT_TYPE_TEXT = "Content-Type";
 
     private final String location;
     private final HttpStatus status;
@@ -27,7 +27,7 @@ public enum ResponseFile {
         String body = Files.readFromClasspath(location);
         return new MockResponse()
                 .setStatus(status.toString())
-                .setHeader(CONTENT_TYPE_TEXT, MediaTypes.APPLICATION_JSON.toString())
+                .setHeader(Header.CONTENT_TYPE.toString(), ContentType.APPLICATION_JSON.getValue())
                 .setBody(body);
     }
 
