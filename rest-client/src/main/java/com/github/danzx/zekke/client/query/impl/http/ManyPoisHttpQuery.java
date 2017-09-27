@@ -21,8 +21,8 @@ public class ManyPoisHttpQuery extends ManyWaypointsHttpQuery<Poi> implements Ma
     }
 
     @Override
-    protected HttpUrl buildEndpointUrl() {
-        final HttpUrl.Builder baseUrl = super.buildEndpointUrl().newBuilder();
+    protected HttpUrl buildUrl() {
+        final HttpUrl.Builder baseUrl = super.buildUrl().newBuilder();
         if (!arePoisComplete()) baseUrl.addPathSegment(ApiUrlParts.PathSegments.NAMES);
         if (getNameQuery() != null) baseUrl.addQueryParameter(ApiUrlParts.QueryParams.QUERY, getNameQuery());
         return baseUrl.build();

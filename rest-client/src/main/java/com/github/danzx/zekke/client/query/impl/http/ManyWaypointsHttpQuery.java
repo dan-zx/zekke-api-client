@@ -38,13 +38,18 @@ public class ManyWaypointsHttpQuery<W extends BaseWaypoint> extends HttpQuery<Li
 
     @Override
     public List<W> get() {
-        Request request = getHttpClient().newBaseRequestBuilderForJsonResponse(buildEndpointUrl())
-                .header(Header.AUTHORIZATION.toString(), tokenHolder.getAccessToken())
-                .build();
-        return getHttpClient().doGetForJson(request, typeToken);
+        return getHttpClient().doGetForJson(buildRequest(), typeToken);
     }
 
-    protected HttpUrl buildEndpointUrl() {
+    @Override
+    protected Request buildRequest() {
+        return getHttpClient().newBaseRequestBuilderForJsonResponse(buildUrl())
+                .header(Header.AUTHORIZATION.toString(), tokenHolder.getAccessToken())
+                .build();
+    }
+
+    @Override
+    protected HttpUrl buildUrl() {
         final HttpUrl.Builder urlBuilder = getHttpClient().newBaseBuilder()
                 .addPathSegment(ApiUrlParts.PathSegments.WAYPOINTS);
         if (waypointClass == Walkway.class) urlBuilder.addPathSegment(ApiUrlParts.PathSegments.WALKWAYS);

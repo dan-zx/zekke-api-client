@@ -17,10 +17,12 @@ public abstract class AuthenticationHttpQuery extends HttpQuery<AccessTokenHolde
         typeToken = TypeToken.get(AccessTokenHolder.class);
     }
 
-    protected HttpUrl.Builder jwtAuthenticationBaseUrl() {
+    @Override
+    protected HttpUrl buildUrl() {
         return getHttpClient().newBaseBuilder()
                 .addPathSegment(ApiUrlParts.PathSegments.AUTHENTICATION)
-                .addPathSegment(ApiUrlParts.PathSegments.JWT);
+                .addPathSegment(ApiUrlParts.PathSegments.JWT)
+                .build();
     }
 
     protected TypeToken<AccessTokenHolder> getTypeToken() {

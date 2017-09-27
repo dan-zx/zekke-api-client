@@ -26,15 +26,24 @@ public class AdminAuthenticationHttpQuery extends AuthenticationHttpQuery {
 
     @Override
     public AccessTokenHolder get() {
+        return getHttpClient().doGetForJson(buildRequest(), getTypeToken());
+    }
+
+    @Override
+    protected Request buildRequest() {
         byte[] userIdAndPasswordBytes = String.format(BASIC_AUTHORIZATION_FORMAT, userId, password).getBytes();
         userIdAndPasswordBytes = Base64.encode(userIdAndPasswordBytes);
         String headerInfo = String.format(AUTHORIZATION_HEADER_FORMAT, new String(userIdAndPasswordBytes));
-        HttpUrl url = jwtAuthenticationBaseUrl()
-                .addPathSegment(ApiUrlParts.PathSegments.ADMIN)
-                .build();
-        Request request = getHttpClient().newBaseRequestBuilderForJsonResponse(url)
+        return getHttpClient().newBaseRequestBuilderForJsonResponse(buildUrl())
                 .header(Header.AUTHORIZATION.toString(), headerInfo)
                 .build();
-        return getHttpClient().doGetForJson(request, getTypeToken());
+    }
+
+    @Override
+    protected HttpUrl buildUrl() {
+        return super.buildUrl()
+                .newBuilder()
+                .addPathSegment(ApiUrlParts.PathSegments.ADMIN)
+                .build();
     }
 }

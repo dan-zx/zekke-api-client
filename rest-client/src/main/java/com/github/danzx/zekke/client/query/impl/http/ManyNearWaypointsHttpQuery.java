@@ -38,14 +38,19 @@ public class ManyNearWaypointsHttpQuery<W extends BaseWaypoint> extends HttpQuer
 
     @Override
     public List<W> get() {
-        Request request = getHttpClient().newBaseRequestBuilderForJsonResponse(buildEndpointUrl())
-                .header(Header.AUTHORIZATION.toString(), tokenHolder.getAccessToken())
-                .build();
-        return getHttpClient().doGetForJson(request, typeToken);
+        return getHttpClient().doGetForJson(buildRequest(), typeToken);
     }
 
-    private HttpUrl buildEndpointUrl() {
-        final HttpUrl.Builder urlBuilder = getHttpClient().newBaseBuilder()
+    @Override
+    protected Request buildRequest() {
+        return getHttpClient().newBaseRequestBuilderForJsonResponse(buildUrl())
+                .header(Header.AUTHORIZATION.toString(), tokenHolder.getAccessToken())
+                .build();
+    }
+
+    @Override
+    protected HttpUrl buildUrl() {
+        HttpUrl.Builder urlBuilder = getHttpClient().newBaseBuilder()
                 .addPathSegment(ApiUrlParts.PathSegments.WAYPOINTS)
                 .addQueryParameter(ApiUrlParts.QueryParams.LOCATION, getLocation().toString());
         if (waypointClass == Walkway.class) urlBuilder.addPathSegment(ApiUrlParts.PathSegments.WALKWAYS);
