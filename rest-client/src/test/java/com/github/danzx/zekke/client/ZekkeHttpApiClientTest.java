@@ -3,10 +3,13 @@ package com.github.danzx.zekke.client;
 import com.github.danzx.zekke.client.core.exception.ApiErrorDetail;
 import com.github.danzx.zekke.client.core.exception.ApiException;
 import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
+import com.github.danzx.zekke.client.http.ContentType;
+import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpRequestException;
 import com.github.danzx.zekke.client.http.HttpResponseBodyException;
 import com.github.danzx.zekke.client.test.HttpMockTest;
 import com.github.danzx.zekke.client.test.ResponseFile;
+import com.github.danzx.zekke.client.util.Charset;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +17,7 @@ import org.junit.runner.RunWith;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.RecordedRequest;
 
 import static java.util.Collections.singletonMap;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,22 +29,26 @@ public class ZekkeHttpApiClientTest extends HttpMockTest {
     private ZekkeHttpApiClient client;
 
     @Override
-    public void onBeforeEachTest() {
+    public void onBeforeEachTest() throws Exception {
         super.onBeforeEachTest();
         client = new ZekkeHttpApiClient(getMockHttpClient());
     }
 
     @Test
-    public void shouldGetAnonymousAccessToken() {
-        enqueueMockResponse(ResponseFile.ACCESS_TOKEN.toMockResponse());
+    public void shouldGetAnonymousAccessToken() throws InterruptedException {
+        getMockServer().enqueue(ResponseFile.ACCESS_TOKEN.toMockResponse());
         AccessTokenHolder accessTokenHolder = client.authenticateAnonymously().get();
+        RecordedRequest request = getMockServer().takeRequest();
+        assertThat(request.getRequestUrl().toString()).endsWith("/authentication/jwt/anonymous");
+        assertThat(request.getHeader(Header.ACCEPT.toString())).isEqualTo(ContentType.APPLICATION_JSON.getValue());
+        assertThat(request.getHeader(Header.ACCEPT_CHARSET.toString())).isEqualTo(Charset.UTF_8.toString());
         assertThat(accessTokenHolder).isNotNull().extracting("accessToken").containsExactly("token");
     }
 
     @Test
     @Parameters(method = "accessTokenResponsesAndExceptionsExpected")
     public void shouldGetAnonymousAccessTokenThrowException(MockResponse mockResponse, Exception expectedException) {
-        enqueueMockResponse(mockResponse);
+        getMockServer().enqueue(mockResponse);
         try {
             client.authenticateAnonymously().get();
             failBecauseExceptionWasNotThrown(expectedException.getClass());
@@ -55,16 +63,21 @@ public class ZekkeHttpApiClientTest extends HttpMockTest {
     }
 
     @Test
-    public void shouldGetAdminAccessToken() {
-        enqueueMockResponse(ResponseFile.ACCESS_TOKEN.toMockResponse());
+    public void shouldGetAdminAccessToken() throws InterruptedException {
+        getMockServer().enqueue(ResponseFile.ACCESS_TOKEN.toMockResponse());
         AccessTokenHolder accessTokenHolder = client.authenticateAdmin("myUserId", "myPassword").get();
+        RecordedRequest request = getMockServer().takeRequest();
+        assertThat(request.getRequestUrl().toString()).endsWith("/authentication/jwt/admin");
+        assertThat(request.getHeader(Header.ACCEPT.toString())).isEqualTo(ContentType.APPLICATION_JSON.getValue());
+        assertThat(request.getHeader(Header.ACCEPT_CHARSET.toString())).isEqualTo(Charset.UTF_8.toString());
+        assertThat(request.getHeader(Header.AUTHORIZATION.toString())).isEqualTo("Basic bXlVc2VySWQ6bXlQYXNzd29yZA==");
         assertThat(accessTokenHolder).isNotNull().extracting("accessToken").containsExactly("token");
     }
 
     @Test
     @Parameters(method = "accessTokenResponsesAndExceptionsExpected")
     public void shouldGetAdminAccessTokenThrowException(MockResponse mockResponse, Exception expectedException) {
-        enqueueMockResponse(mockResponse);
+        getMockServer().enqueue(mockResponse);
         try {
             client.authenticateAdmin("myUserId", "myPassword").get();
             failBecauseExceptionWasNotThrown(expectedException.getClass());
