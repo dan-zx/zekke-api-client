@@ -8,8 +8,8 @@ import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpRequestException;
 import com.github.danzx.zekke.client.http.HttpResponseBodyException;
 import com.github.danzx.zekke.client.http.Method;
-import com.github.danzx.zekke.client.test.HttpMockTest;
-import com.github.danzx.zekke.client.test.ResponseFile;
+import com.github.danzx.zekke.client.test.mock.http.HttpMockTest;
+import com.github.danzx.zekke.client.test.mock.http.ResponseFile;
 import com.github.danzx.zekke.client.util.Charset;
 
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.github.danzx.zekke.client.test;
+package com.github.danzx.zekke.client.test.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

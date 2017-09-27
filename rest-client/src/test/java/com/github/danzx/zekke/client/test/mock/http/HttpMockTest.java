@@ -1,4 +1,4 @@
-package com.github.danzx.zekke.client.test;
+package com.github.danzx.zekke.client.test.mock.http;
 
 import com.github.danzx.zekke.client.http.HttpClient;
 

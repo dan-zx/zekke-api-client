@@ -1,8 +1,9 @@
-package com.github.danzx.zekke.client.test;
+package com.github.danzx.zekke.client.test.mock.http;
 
 import com.github.danzx.zekke.client.http.ContentType;
 import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpStatus;
+import com.github.danzx.zekke.client.test.util.Files;
 
 import java.util.concurrent.TimeUnit;
 
