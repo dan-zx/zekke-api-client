@@ -15,6 +15,7 @@
  */
 package com.github.danzx.zekke.client.core.exception;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -25,7 +26,7 @@ import java.util.Objects;
  */
 public class ApiErrorDetail {
 
-    public enum ErrorType { PARAM_VALIDATION, RESOURCE_NOT_FOUND, SERVER_ERROR, AUTHORIZATION, OTHER }
+    public enum ErrorType { PARAM_VALIDATION, NOT_FOUND, SERVER_ERROR, AUTHORIZATION, OTHER }
 
     private int statusCode;
     private String errorDetail;
@@ -57,6 +58,7 @@ public class ApiErrorDetail {
     }
 
     public Map<String, String> getParamErrors() {
+        if (paramErrors == null) paramErrors = new HashMap<>();
         return paramErrors;
     }
 

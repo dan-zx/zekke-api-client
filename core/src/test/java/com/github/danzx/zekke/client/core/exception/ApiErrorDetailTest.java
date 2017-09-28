@@ -57,7 +57,7 @@ public class ApiErrorDetailTest {
         assertThat(TESTEE.equals(other)).isFalse();
 
         other = newCoordinates();
-        other.setErrorType(ErrorType.RESOURCE_NOT_FOUND);
+        other.setErrorType(ErrorType.NOT_FOUND);
         assertThat(TESTEE.equals(other)).isFalse();
 
         other = newCoordinates();
