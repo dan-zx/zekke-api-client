@@ -6,7 +6,6 @@ import com.github.danzx.zekke.client.query.ManyPoisOptions;
 import com.github.danzx.zekke.client.query.Query;
 import com.github.danzx.zekke.client.query.impl.http.ManyPoisHttpQuery;
 
-import java.util.List;
 import java.util.concurrent.Callable;
 
 import io.reactivex.Observable;
@@ -26,8 +25,7 @@ public class ManyPoisHttpQueryRxWrapper implements ManyPoisOptions, Query<Observ
             @Override
             public ObservableSource<? extends Poi> call() throws Exception {
                 try {
-                    List<Poi> result = httpQuery.get();
-                    return Observable.fromIterable(result);
+                    return Observable.fromIterable(httpQuery.get());
                 } catch (Exception ex) {
                     return Observable.error(ex);
                 }

@@ -6,7 +6,6 @@ import com.github.danzx.zekke.client.query.ManyWaypointsOptions;
 import com.github.danzx.zekke.client.query.Query;
 import com.github.danzx.zekke.client.query.impl.http.ManyWaypointsHttpQuery;
 
-import java.util.List;
 import java.util.concurrent.Callable;
 
 import io.reactivex.Observable;
@@ -26,8 +25,7 @@ public class ManyWaypointsHttpQueryRxWrapper<W extends BaseWaypoint> implements 
             @Override
             public ObservableSource<W> call() throws Exception {
                 try {
-                    List<W> result = httpQuery.get();
-                    return Observable.fromIterable(result);
+                    return Observable.fromIterable(httpQuery.get());
                 } catch (Exception ex) {
                     return Observable.error(ex);
                 }

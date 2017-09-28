@@ -23,8 +23,7 @@ public class AuthenticationHttpQueryRxWrapper implements Query<Observable<Access
             @Override
             public ObservableSource<? extends AccessTokenHolder> call() throws Exception {
                 try {
-                    AccessTokenHolder result = httpQuery.get();
-                    return Observable.just(result);
+                    return Observable.just(httpQuery.get());
                 } catch (Exception ex) {
                     return Observable.error(ex);
                 }
