@@ -1,0 +1,8 @@
+{
+  "statusCode": 400,
+  "errorDetail": "Parameter validation failed",
+  "errorType": "PARAM_VALIDATION",
+  "paramErrors": {
+    "arg0": "not valid"
+  }
+}

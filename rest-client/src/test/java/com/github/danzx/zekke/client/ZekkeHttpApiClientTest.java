@@ -97,13 +97,12 @@ public class ZekkeHttpApiClientTest extends HttpMockTest {
     public Object[] accessTokenResponsesAndExceptionsExpected() {
         ApiErrorDetail genericErrorDetail = new ApiErrorDetail();
         genericErrorDetail.setStatusCode(500);
-        genericErrorDetail.setErrorDetail("Generic error");
+        genericErrorDetail.setErrorDetail("Something bad happen in the server");
         genericErrorDetail.setErrorType(ApiErrorDetail.ErrorType.SERVER_ERROR);
-        genericErrorDetail.setParamErrors(singletonMap("arg0", "error0"));
         return new Object[][] {
                 {ResponseFile.ACCESS_TOKEN.toSlowMockResponse(), new HttpRequestException("Connection timeout")},
-                {ResponseFile.EMPTY.toMockResponse(), new HttpResponseBodyException("Expecting to have response with body")},
-                {ResponseFile.GENERIC_ERROR.toMockResponse(), new ApiException(genericErrorDetail)}
+                {ResponseFile.NO_CONTENT.toMockResponse(), new HttpResponseBodyException("Expecting to have response with body")},
+                {ResponseFile.SERVER_ERROR.toMockResponse(), new ApiException(genericErrorDetail)}
         };
     }
 }

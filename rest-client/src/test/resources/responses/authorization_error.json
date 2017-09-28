@@ -1,0 +1,5 @@
+{
+  "statusCode": 401,
+  "errorDetail": "Unauthorized to use resource",
+  "errorType": "AUTHORIZATION"
+}
