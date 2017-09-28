@@ -8,6 +8,7 @@ public interface ZekkeApiClient {
 
     Query<?> authenticateAnonymously();
     Query<?> authenticateAdmin(String userId, String password);
+    Query<?> oneWaypoint(long id);
     Query<?> waypoints();
     Query<?> walkways();
     Query<?> pois();

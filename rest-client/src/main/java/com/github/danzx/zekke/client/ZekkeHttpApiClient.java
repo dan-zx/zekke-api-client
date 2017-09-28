@@ -10,6 +10,7 @@ import com.github.danzx.zekke.client.query.impl.http.AnonymouslyAuthenticationHt
 import com.github.danzx.zekke.client.query.impl.http.ManyNearWaypointsHttpQuery;
 import com.github.danzx.zekke.client.query.impl.http.ManyPoisHttpQuery;
 import com.github.danzx.zekke.client.query.impl.http.ManyWaypointsHttpQuery;
+import com.github.danzx.zekke.client.query.impl.http.OneWaypointHttpQuery;
 
 import static java.util.Objects.requireNonNull;
 
@@ -29,6 +30,11 @@ public class ZekkeHttpApiClient extends BaseZekkeApiClient {
     @Override
     public AdminAuthenticationHttpQuery authenticateAdmin(String userId, String password) {
         return new AdminAuthenticationHttpQuery(httpClient, userId, password);
+    }
+
+    @Override
+    public OneWaypointHttpQuery oneWaypoint(long id) {
+        return new OneWaypointHttpQuery(httpClient, getTokenHolder(), id);
     }
 
     @Override
