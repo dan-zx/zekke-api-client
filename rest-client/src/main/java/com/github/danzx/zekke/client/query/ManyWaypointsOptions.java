@@ -7,6 +7,7 @@ import static java.util.Objects.requireNonNull;
 public interface ManyWaypointsOptions {
 
     ManyWaypointsOptions enclosedInRectangle(BoundingBox bbox);
+
     BoundingBox getBbox();
 
     class Builder implements ManyWaypointsOptions {

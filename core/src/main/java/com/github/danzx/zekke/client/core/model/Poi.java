@@ -19,7 +19,7 @@ import java.util.Objects;
 
 /**
  * POI request/response object.
- * 
+ *
  * @author Daniel Pedraza-Arcega
  */
 public class Poi extends BaseWaypoint {
@@ -50,9 +50,9 @@ public class Poi extends BaseWaypoint {
     /**
      * Use this method to complete your equals method.
      *
-     * @see Object#equals(Object)
      * @param other the reference object with which to compare.
      * @return {@code true} if this object is the same as the argument; {@code false} otherwise.
+     * @see Object#equals(Object)
      */
     protected boolean isPoiEqualTo(Poi other) {
         return isBaseWaypointEqualTo(other) &&

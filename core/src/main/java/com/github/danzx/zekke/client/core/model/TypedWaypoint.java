@@ -19,7 +19,7 @@ import java.util.Objects;
 
 /**
  * Waypoint request/response object with type.
- * 
+ *
  * @author Daniel Pedraza-Arcega
  */
 public class TypedWaypoint extends BaseWaypoint {
@@ -27,7 +27,6 @@ public class TypedWaypoint extends BaseWaypoint {
     public enum Type { POI, WALKWAY }
 
     private Type type;
-
     private String name;
 
     public Type getType() {
@@ -62,9 +61,9 @@ public class TypedWaypoint extends BaseWaypoint {
     /**
      * Use this method to complete your equals method.
      *
-     * @see Object#equals(Object)
      * @param other the reference object with which to compare.
      * @return {@code true} if this object is the same as the argument; {@code false} otherwise.
+     * @see Object#equals(Object)
      */
     protected boolean isTypedWaypointEqualTo(TypedWaypoint other) {
         return isBaseWaypointEqualTo(other) &&

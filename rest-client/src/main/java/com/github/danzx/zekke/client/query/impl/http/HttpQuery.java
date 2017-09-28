@@ -26,6 +26,7 @@ abstract class HttpQuery<R> implements Query<R> {
     }
 
     protected abstract HttpUrl buildUrl();
+
     protected abstract Request buildRequest();
 
     protected Request.Builder buildRequestForJsonResponse() {

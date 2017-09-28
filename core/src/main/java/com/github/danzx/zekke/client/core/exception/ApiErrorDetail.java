@@ -21,7 +21,7 @@ import java.util.Objects;
 
 /**
  * API Error response object.
- * 
+ *
  * @author Daniel Pedraza-Arcega
  */
 public class ApiErrorDetail {
@@ -82,9 +82,9 @@ public class ApiErrorDetail {
     /**
      * Use this method to complete your equals method.
      *
-     * @see Object#equals(Object)
      * @param other the reference object with which to compare.
      * @return {@code true} if this object is the same as the argument; {@code false} otherwise.
+     * @see Object#equals(Object)
      */
     protected boolean isErrorMessageEqualTo(ApiErrorDetail other) {
         return Objects.equals(statusCode, other.statusCode) &&

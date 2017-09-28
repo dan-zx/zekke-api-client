@@ -7,9 +7,13 @@ import static java.util.Objects.requireNonNull;
 public interface ManyNearWaypointsOptions {
 
     ManyNearWaypointsOptions atMostDistance(int distance);
+
     ManyNearWaypointsOptions limit(int limit);
+
     Coordinates getLocation();
+
     Integer getDistance();
+
     Integer getLimit();
 
     class Builder implements ManyNearWaypointsOptions {

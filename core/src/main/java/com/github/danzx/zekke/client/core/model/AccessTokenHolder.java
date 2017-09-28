@@ -19,7 +19,7 @@ import java.util.Objects;
 
 /**
  * Access token holder. Pretty obvious isn't it?
- * 
+ *
  * @author Daniel Pedraza-Arcega
  */
 public class AccessTokenHolder {
@@ -50,9 +50,9 @@ public class AccessTokenHolder {
     /**
      * Use this method to complete your equals method.
      *
-     * @see Object#equals(Object)
      * @param other the reference object with which to compare.
      * @return {@code true} if this object is the same as the argument; {@code false} otherwise.
+     * @see Object#equals(Object)
      */
     protected boolean isAccessTokenHolderEqualTo(AccessTokenHolder other) {
         return Objects.equals(accessToken, other.accessToken);

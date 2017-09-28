@@ -1,39 +1,35 @@
 [
   {
-    "id":1,
-    "type":"WALKWAY",
-    "location":
-    {
-      "latitude":  19.387591,
+    "id": 1,
+    "type": "WALKWAY",
+    "location": {
+      "latitude": 19.387591,
       "longitude": -99.052734
     }
   },
   {
-    "id":2,
-    "name":"A poi name",
-    "type":"POI",
-    "location":
-    {
-      "latitude":  19.387591,
+    "id": 2,
+    "name": "A poi name",
+    "type": "POI",
+    "location": {
+      "latitude": 19.387591,
       "longitude": -99.052734
     }
   },
   {
-    "id":3,
-    "name":"A second poi name",
-    "type":"POI",
-    "location":
-    {
-      "latitude":  20.88175,
+    "id": 3,
+    "name": "A second poi name",
+    "type": "POI",
+    "location": {
+      "latitude": 20.88175,
       "longitude": -11.00459
     }
   },
   {
-    "id":4,
-    "type":"WALKWAY",
-    "location":
-    {
-      "latitude":  54.45657,
+    "id": 4,
+    "type": "WALKWAY",
+    "location": {
+      "latitude": 54.45657,
       "longitude": -108.787921
     }
   }

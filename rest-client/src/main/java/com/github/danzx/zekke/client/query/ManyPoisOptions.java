@@ -7,10 +7,15 @@ import static java.util.Objects.requireNonNull;
 public interface ManyPoisOptions extends ManyWaypointsOptions {
 
     @Override ManyPoisOptions enclosedInRectangle(BoundingBox bbox);
+
     ManyPoisOptions forSuggestions();
+
     ManyPoisOptions complete();
+
     ManyPoisOptions withNameContainig(String nameQuery);
+
     boolean arePoisComplete();
+
     String getNameQuery();
 
     class Builder extends ManyWaypointsOptions.Builder implements ManyPoisOptions {

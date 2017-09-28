@@ -19,7 +19,7 @@ import java.util.Objects;
 
 /**
  * Represents a geographic point in the planet.
- * 
+ *
  * @author Daniel Pedraza-Arcega
  */
 public class Coordinates {
@@ -60,19 +60,19 @@ public class Coordinates {
 
     /**
      * Use this method to complete your equals method.
-     * 
-     * @see Object#equals(Object)
+     *
      * @param other the reference object with which to compare.
      * @return {@code true} if this object is the same as the argument; {@code false} otherwise.
+     * @see Object#equals(Object)
      */
     protected boolean isCoordinatesEqualTo(Coordinates other) {
-        return Objects.equals(latitude, other.latitude) && 
-               Objects.equals(longitude, other.longitude);
+        return Objects.equals(latitude, other.latitude) &&
+                Objects.equals(longitude, other.longitude);
     }
 
     /**
-     * Returns a String object representing this Coordinates object. 
-     * 
+     * Returns a String object representing this Coordinates object.
+     *
      * @return {@code <latitude_value>,<longitude_value>}
      */
     @Override

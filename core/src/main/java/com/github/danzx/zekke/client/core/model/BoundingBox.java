@@ -19,7 +19,7 @@ import java.util.Objects;
 
 /**
  * Contains a bottom left coordinates and upper right coordinates of a rectangle.
- * 
+ *
  * @author Daniel Pedraza-Arcega
  */
 public class BoundingBox {
@@ -60,10 +60,10 @@ public class BoundingBox {
 
     /**
      * Use this method to complete your equals method.
-     * 
-     * @see Object#equals(Object)
+     *
      * @param other the reference object with which to compare.
      * @return {@code true} if this object is the same as the argument; {@code false} otherwise.
+     * @see Object#equals(Object)
      */
     protected boolean isBoundingBoxEqualTo(BoundingBox other) {
         return Objects.equals(bottomCoordinates, other.bottomCoordinates) &&
@@ -71,8 +71,8 @@ public class BoundingBox {
     }
 
     /**
-     * Returns a String object representing this BoundingBox. 
-     * 
+     * Returns a String object representing this BoundingBox.
+     *
      * @return {@code <bottom_latitude>,<left_longitude>;<top_latitude>,<right_longitude>}
      */
     @Override

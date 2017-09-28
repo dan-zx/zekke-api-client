@@ -164,7 +164,7 @@ public class ZekkeHttpApiClientTest extends HttpMockTest {
         otherErrorDetail.setErrorDetail("Unexpected error");
         otherErrorDetail.setErrorType(ApiErrorDetail.ErrorType.OTHER);
 
-        return new Object[][] {
+        return new Object[][]{
                 {ResponseFile.BAD_REQUEST_ERROR.toMockResponse(), new ApiException(badRequestErrorDetail)},
                 {ResponseFile.AUTHORIZATION_FAILED_ERROR.toMockResponse(), new ApiException(authorizationErrorDetail)},
                 {ResponseFile.NOT_FOUND_ERROR.toMockResponse(), new ApiException(notFoundErrorDetail)},

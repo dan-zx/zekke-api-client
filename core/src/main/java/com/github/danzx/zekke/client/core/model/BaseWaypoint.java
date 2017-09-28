@@ -19,7 +19,7 @@ import java.util.Objects;
 
 /**
  * Base waypoint request/response object.
- * 
+ *
  * @author Daniel Pedraza-Arcega
  */
 public abstract class BaseWaypoint {
@@ -60,9 +60,9 @@ public abstract class BaseWaypoint {
     /**
      * Use this method to complete your equals method.
      *
-     * @see Object#equals(Object)
      * @param other the reference object with which to compare.
      * @return {@code true} if this object is the same as the argument; {@code false} otherwise.
+     * @see Object#equals(Object)
      */
     protected boolean isBaseWaypointEqualTo(BaseWaypoint other) {
         return Objects.equals(id, other.id) &&

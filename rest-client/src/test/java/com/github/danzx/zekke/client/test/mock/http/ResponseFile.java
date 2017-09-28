@@ -44,6 +44,6 @@ public enum ResponseFile {
 
     public MockResponse toSlowMockResponse() {
         return toMockResponse()
-                .throttleBody(1,1, TimeUnit.SECONDS);
+                .throttleBody(1, 1, TimeUnit.SECONDS);
     }
 }

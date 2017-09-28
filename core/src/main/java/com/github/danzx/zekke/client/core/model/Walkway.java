@@ -17,7 +17,7 @@ package com.github.danzx.zekke.client.core.model;
 
 /**
  * Walkway request/response object.
- * 
+ *
  * @author Daniel Pedraza-Arcega
  */
 public class Walkway extends BaseWaypoint { }

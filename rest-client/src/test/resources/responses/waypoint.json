@@ -1,10 +1,9 @@
 {
-  "id":2,
-  "name":"A poi name",
-  "type":"POI",
-  "location":
-  {
-    "latitude":  19.387591,
+  "id": 2,
+  "name": "A poi name",
+  "type": "POI",
+  "location": {
+    "latitude": 19.387591,
     "longitude": -99.052734
   }
 }

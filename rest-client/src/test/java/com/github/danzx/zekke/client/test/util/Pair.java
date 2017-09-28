@@ -36,6 +36,6 @@ public class Pair<T0, T1> {
 
     @Override
     public String toString() {
-        return "<" + _0 +  ", " + _1 +  '>';
+        return "<" + _0 + ", " + _1 + ">";
     }
 }
