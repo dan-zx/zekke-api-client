@@ -13,9 +13,7 @@ public class AnonymouslyAuthenticationHttpQuery extends AuthenticationHttpQuery 
 
     @Override
     protected Request buildRequest() {
-        return getHttpClient()
-                .newBaseRequestBuilderForJsonResponse(buildUrl())
-                .build();
+        return buildRequestForJsonResponse().build();
     }
 
     @Override

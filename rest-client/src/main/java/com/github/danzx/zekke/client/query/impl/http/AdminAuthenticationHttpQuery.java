@@ -28,7 +28,7 @@ public class AdminAuthenticationHttpQuery extends AuthenticationHttpQuery {
         byte[] userIdAndPasswordBytes = String.format(BASIC_AUTHORIZATION_FORMAT, userId, password).getBytes();
         userIdAndPasswordBytes = Base64.encode(userIdAndPasswordBytes);
         String headerInfo = String.format(AUTHORIZATION_HEADER_FORMAT, new String(userIdAndPasswordBytes));
-        return getHttpClient().newBaseRequestBuilderForJsonResponse(buildUrl())
+        return buildRequestForJsonResponse()
                 .header(Header.AUTHORIZATION.toString(), headerInfo)
                 .build();
     }

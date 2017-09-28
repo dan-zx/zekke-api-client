@@ -7,7 +7,6 @@ import com.github.danzx.zekke.client.core.model.BaseWaypoint;
 import com.github.danzx.zekke.client.core.model.Coordinates;
 import com.github.danzx.zekke.client.core.model.Poi;
 import com.github.danzx.zekke.client.core.model.Walkway;
-import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpClient;
 import com.github.danzx.zekke.client.query.ManyNearWaypointsOptions;
 import com.github.danzx.zekke.client.query.Query;
@@ -20,26 +19,22 @@ import okhttp3.Request;
 
 import static java.util.Objects.requireNonNull;
 
-public class ManyNearWaypointsHttpQuery<W extends BaseWaypoint> extends HttpQuery<List<W>> implements ManyNearWaypointsOptions, Query<List<W>> {
+public class ManyNearWaypointsHttpQuery<W extends BaseWaypoint> extends JwtAuthorizedHttpQuery<List<W>> implements ManyNearWaypointsOptions, Query<List<W>> {
 
     private final Class<W> waypointClass;
     private final ManyNearWaypointsOptions.Builder optionsBuilder;
-    private final AccessTokenHolder tokenHolder;
 
     @SuppressWarnings("unchecked")
     public ManyNearWaypointsHttpQuery(Class<W> waypointClass, HttpClient httpClient, Coordinates location, AccessTokenHolder tokenHolder) {
-        super(httpClient, (TypeToken<List<W>>) TypeToken.getParameterized(ArrayList.class, waypointClass).getType());
+        super(httpClient, (TypeToken<List<W>>) TypeToken.getParameterized(ArrayList.class, waypointClass).getType(), tokenHolder);
         this.waypointClass = requireNonNull(waypointClass);
-        this.tokenHolder = requireNonNull(tokenHolder);
         optionsBuilder = new ManyNearWaypointsOptions.Builder(location);
 
     }
 
     @Override
     protected Request buildRequest() {
-        return getHttpClient().newBaseRequestBuilderForJsonResponse(buildUrl())
-                .header(Header.AUTHORIZATION.toString(), tokenHolder.getAccessToken())
-                .build();
+        return buildRequestForJsonResponse().build();
     }
 
     @Override
