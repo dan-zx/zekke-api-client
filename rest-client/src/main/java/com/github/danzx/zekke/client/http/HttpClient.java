@@ -65,7 +65,7 @@ public class HttpClient {
     public Request.Builder newBaseRequestBuilderForJsonResponse(HttpUrl url) {
         return new Request.Builder()
                 .url(url)
-                .header(Header.ACCEPT.toString(), ContentType.APPLICATION_JSON.getValue())
+                .header(Header.ACCEPT.toString(), ContentType.APPLICATION_JSON.value())
                 .header(Header.ACCEPT_LANGUAGE.toString(), Locale.getDefault().getLanguage())
                 .header(Header.ACCEPT_CHARSET.toString(), Charset.UTF_8.toString());
     }

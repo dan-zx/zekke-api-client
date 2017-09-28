@@ -51,7 +51,7 @@ public class ZekkeHttpApiClientTest extends HttpMockTest {
         assertThat(request).isNotNull()
                 .hasMethod(Method.GET)
                 .hasPathEndingWith("/authentication/jwt/anonymous")
-                .containsHeaders(pairOf(Header.ACCEPT, ContentType.APPLICATION_JSON.getValue()), pairOf(Header.ACCEPT_CHARSET, Charset.UTF_8.toString()));
+                .containsHeaders(pairOf(Header.ACCEPT, ContentType.APPLICATION_JSON.value()), pairOf(Header.ACCEPT_CHARSET, Charset.UTF_8.toString()));
         assertThat(accessTokenHolder).isNotNull().isEqualTo(fakeAccessTokenHolder);
     }
 
@@ -79,7 +79,7 @@ public class ZekkeHttpApiClientTest extends HttpMockTest {
         assertThat(request).isNotNull()
                 .hasMethod(Method.GET)
                 .hasPathEndingWith("/authentication/jwt/admin")
-                .containsHeaders(pairOf(Header.ACCEPT, ContentType.APPLICATION_JSON.getValue()), pairOf(Header.ACCEPT_CHARSET, Charset.UTF_8.toString()), pairOf(Header.AUTHORIZATION, "Basic bXlVc2VySWQ6bXlQYXNzd29yZA=="));
+                .containsHeaders(pairOf(Header.ACCEPT, ContentType.APPLICATION_JSON.value()), pairOf(Header.ACCEPT_CHARSET, Charset.UTF_8.toString()), pairOf(Header.AUTHORIZATION, "Basic bXlVc2VySWQ6bXlQYXNzd29yZA=="));
         assertThat(accessTokenHolder).isNotNull().isEqualTo(fakeAccessTokenHolder);
     }
 
@@ -116,7 +116,7 @@ public class ZekkeHttpApiClientTest extends HttpMockTest {
         assertThat(request).isNotNull()
                 .hasMethod(Method.GET)
                 .hasPathEndingWith("/waypoints/" + expectedWaypoint.getId())
-                .containsHeaders(pairOf(Header.ACCEPT, ContentType.APPLICATION_JSON.getValue()), pairOf(Header.ACCEPT_CHARSET, Charset.UTF_8.toString()), pairOf(Header.AUTHORIZATION, "Bearer token"));
+                .containsHeaders(pairOf(Header.ACCEPT, ContentType.APPLICATION_JSON.value()), pairOf(Header.ACCEPT_CHARSET, Charset.UTF_8.toString()), pairOf(Header.AUTHORIZATION, "Bearer token"));
         assertThat(actualWaypoint).isNotNull().isEqualTo(expectedWaypoint);
     }
 

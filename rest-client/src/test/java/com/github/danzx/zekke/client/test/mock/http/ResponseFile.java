@@ -38,7 +38,7 @@ public enum ResponseFile {
         String body = Files.readFromClasspath(location);
         return new MockResponse()
                 .setStatus(status.toString())
-                .setHeader(Header.CONTENT_TYPE.toString(), ContentType.APPLICATION_JSON.getValue())
+                .setHeader(Header.CONTENT_TYPE.toString(), ContentType.APPLICATION_JSON.value())
                 .setBody(body);
     }
 

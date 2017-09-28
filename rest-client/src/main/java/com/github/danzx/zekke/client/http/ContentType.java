@@ -28,11 +28,11 @@ public enum ContentType {
         mediaType = MediaType.parse(this.value);
     }
 
-    public String getValue() {
+    public String value() {
         return value;
     }
 
-    public MediaType getMediaType() {
+    public MediaType mediaType() {
         return mediaType;
     }
 }
