@@ -3,6 +3,8 @@ package com.github.danzx.zekke.client;
 import com.github.danzx.zekke.client.core.exception.ApiErrorDetail;
 import com.github.danzx.zekke.client.core.exception.ApiException;
 import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
+import com.github.danzx.zekke.client.core.model.Coordinates;
+import com.github.danzx.zekke.client.core.model.TypedWaypoint;
 import com.github.danzx.zekke.client.http.ContentType;
 import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpRequestException;
@@ -87,6 +89,44 @@ public class ZekkeHttpApiClientTest extends HttpMockTest {
         getMockServer().enqueue(mockResponse);
         try {
             client.authenticateAdmin("myUserId", "myPassword").get();
+            failBecauseExceptionWasNotThrown(expectedException.getClass());
+        } catch (ApiException ex) {
+            assertThat(ex).hasMessage(expectedException.getMessage());
+            ApiErrorDetail expectedApiErrorDetail = ((ApiException) expectedException).getApiErrorDetail();
+            assertThat(ex.getApiErrorDetail()).isEqualTo(expectedApiErrorDetail);
+        } catch (Exception ex) {
+            assertThat(ex).isInstanceOf(expectedException.getClass()).hasMessage(expectedException.getMessage());
+        }
+    }
+
+    @Test
+    public void shouldGetOneWaypoint() throws InterruptedException {
+        getMockServer().enqueue(ResponseFile.ONE_WAYPOINT.toMockResponse());
+        client.setAuthenticaton(fakeAccessTokenHolder);
+        TypedWaypoint expectedWaypoint = new TypedWaypoint();
+        expectedWaypoint.setId(2L);
+        expectedWaypoint.setName("A poi name");
+        expectedWaypoint.setType(TypedWaypoint.Type.POI);
+        Coordinates location = new Coordinates();
+        location.setLatitude(19.387591);
+        location.setLongitude(-99.052734);
+        expectedWaypoint.setLocation(location);
+        TypedWaypoint actualWaypoint = client.oneWaypoint(expectedWaypoint.getId()).get();
+        RecordedRequest request = getMockServer().takeRequest();
+        assertThat(request).isNotNull()
+                .hasMethod(Method.GET)
+                .hasPathEndingWith("/waypoints/" + expectedWaypoint.getId())
+                .containsHeaders(pairOf(Header.ACCEPT, ContentType.APPLICATION_JSON.getValue()), pairOf(Header.ACCEPT_CHARSET, Charset.UTF_8.toString()), pairOf(Header.AUTHORIZATION, "Bearer token"));
+        assertThat(actualWaypoint).isNotNull().isEqualTo(expectedWaypoint);
+    }
+
+    @Test
+    @Parameters(method = "mockResponsesAndExceptionsExpectedWhenJsonBodyIsExpected")
+    public void shouldGetOneWaypointThrowException(MockResponse mockResponse, Exception expectedException) {
+        getMockServer().enqueue(mockResponse);
+        client.setAuthenticaton(fakeAccessTokenHolder);
+        try {
+            client.oneWaypoint(1L).get();
             failBecauseExceptionWasNotThrown(expectedException.getClass());
         } catch (ApiException ex) {
             assertThat(ex).hasMessage(expectedException.getMessage());
