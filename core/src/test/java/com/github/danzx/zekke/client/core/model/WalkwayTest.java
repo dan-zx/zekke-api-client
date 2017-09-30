@@ -24,6 +24,12 @@ public class WalkwayTest {
     private static final Walkway TESTEE = newWalkway();
 
     @Test
+    public void shouldGettersReturnNonNullValues() {
+        assertThat(TESTEE.getId()).isNotNull();
+        assertThat(TESTEE.getLocation()).isNotNull();
+    }
+
+    @Test
     public void shouldEqualsBeTrueWhenSameReference() {
         assertThat(TESTEE.equals(TESTEE)).isTrue();
     }

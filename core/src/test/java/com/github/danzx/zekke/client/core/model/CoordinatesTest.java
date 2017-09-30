@@ -24,6 +24,12 @@ public class CoordinatesTest {
     private static final Coordinates TESTEE = newCoordinates();
 
     @Test
+    public void shouldGettersReturnNonNullValues() {
+        assertThat(TESTEE.getLatitude()).isNotNull();
+        assertThat(TESTEE.getLongitude()).isNotNull();
+    }
+
+    @Test
     public void shouldEqualsBeTrueWhenSameReference() {
         assertThat(TESTEE.equals(TESTEE)).isTrue();
     }
@@ -52,6 +58,11 @@ public class CoordinatesTest {
         other = newCoordinates();
         other.setLongitude(109.27);
         assertThat(TESTEE.equals(other)).isFalse();
+    }
+
+    @Test
+    public void shouldToStringReturnCorrectFormat() {
+        assertThat(TESTEE.toString()).isNotNull().isNotEmpty().isEqualTo("19.023,-39.453");
     }
 
     @Test

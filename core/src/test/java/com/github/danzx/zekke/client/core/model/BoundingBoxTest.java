@@ -21,12 +21,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BoundingBoxTest {
 
-    private static final BoundingBox TESTEE;
+    private static final BoundingBox TESTEE = newBoundingBox();
 
-    static {
-        TESTEE = new BoundingBox();
-        TESTEE.setBottomCoordinates(newCoordinates(19.023, -39.453));
-        TESTEE.setTopCoordinates(newCoordinates(48.125, 109.27));
+    @Test
+    public void shouldGettersReturnNonNullValues() {
+        assertThat(TESTEE.getBottomCoordinates()).isNotNull();
+        assertThat(TESTEE.getTopCoordinates()).isNotNull();
     }
 
     @Test
@@ -71,6 +71,18 @@ public class BoundingBoxTest {
         other.setTopCoordinates(TESTEE.getTopCoordinates());
         other.setBottomCoordinates(TESTEE.getBottomCoordinates());
         assertThat(TESTEE.hashCode()).isEqualTo(TESTEE.hashCode()).isEqualTo(other.hashCode());
+    }
+
+    @Test
+    public void shouldToStringReturnCorrectFormat() {
+        assertThat(TESTEE.toString()).isNotNull().isNotEmpty().isEqualTo("19.023,-39.453;48.125,109.27");
+    }
+
+    private static BoundingBox newBoundingBox() {
+        BoundingBox boundingBox = new BoundingBox();
+        boundingBox.setBottomCoordinates(newCoordinates(19.023, -39.453));
+        boundingBox.setTopCoordinates(newCoordinates(48.125, 109.27));
+        return boundingBox;
     }
 
     private static Coordinates newCoordinates(double lat, double lng) {

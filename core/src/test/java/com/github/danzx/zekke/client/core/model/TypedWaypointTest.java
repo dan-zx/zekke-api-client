@@ -24,6 +24,14 @@ public class TypedWaypointTest {
     private static final TypedWaypoint TESTEE = newTypedWaypoint();
 
     @Test
+    public void shouldGettersReturnNonNullValues() {
+        assertThat(TESTEE.getId()).isNotNull();
+        assertThat(TESTEE.getLocation()).isNotNull();
+        assertThat(TESTEE.getName()).isNotNull();
+        assertThat(TESTEE.getType()).isNotNull();
+    }
+
+    @Test
     public void shouldEqualsBeTrueWhenSameReference() {
         assertThat(TESTEE.equals(TESTEE)).isTrue();
     }

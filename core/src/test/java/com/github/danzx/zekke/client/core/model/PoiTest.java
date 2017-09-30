@@ -24,6 +24,13 @@ public class PoiTest {
     private static final Poi TESTEE = newPoi();
 
     @Test
+    public void shouldGettersReturnNonNullValues() {
+        assertThat(TESTEE.getId()).isNotNull();
+        assertThat(TESTEE.getLocation()).isNotNull();
+        assertThat(TESTEE.getName()).isNotNull();
+    }
+
+    @Test
     public void shouldEqualsBeTrueWhenSameReference() {
         assertThat(TESTEE.equals(TESTEE)).isTrue();
     }

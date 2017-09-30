@@ -16,7 +16,6 @@
 package com.github.danzx.zekke.client.core.exception;
 
 import com.github.danzx.zekke.client.core.exception.ApiErrorDetail.ErrorType;
-
 import org.junit.Test;
 
 import static java.util.Collections.singletonMap;
@@ -24,7 +23,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ApiErrorDetailTest {
 
-    private static final ApiErrorDetail TESTEE = newCoordinates();
+    private static final ApiErrorDetail TESTEE = newApiErrorDetail();
+
+    @Test
+    public void shouldGettersReturnNonNullValues() {
+        assertThat(TESTEE.getStatusCode()).isNotNull();
+        assertThat(TESTEE.getErrorDetail()).isNotNull();
+        assertThat(TESTEE.getErrorType()).isNotNull();
+        assertThat(TESTEE.getParamErrors()).isNotNull();
+    }
 
     @Test
     public void shouldEqualsBeTrueWhenSameReference() {
@@ -33,7 +40,7 @@ public class ApiErrorDetailTest {
 
     @Test
     public void shouldEqualsBeTrueWhenObjectsAreNotTheSameReference() {
-        assertThat(TESTEE.equals(newCoordinates())).isTrue();
+        assertThat(TESTEE.equals(newApiErrorDetail())).isTrue();
     }
 
     @Test
@@ -48,30 +55,30 @@ public class ApiErrorDetailTest {
 
     @Test
     public void shouldEqualsBeFalseWhenAtLeastOnePropertyIsDifferent() {
-        ApiErrorDetail other = newCoordinates();
+        ApiErrorDetail other = newApiErrorDetail();
         other.setStatusCode(404);
         assertThat(TESTEE.equals(other)).isFalse();
 
-        other = newCoordinates();
+        other = newApiErrorDetail();
         other.setErrorDetail("Not found");
         assertThat(TESTEE.equals(other)).isFalse();
 
-        other = newCoordinates();
+        other = newApiErrorDetail();
         other.setErrorType(ErrorType.NOT_FOUND);
         assertThat(TESTEE.equals(other)).isFalse();
 
-        other = newCoordinates();
+        other = newApiErrorDetail();
         other.setParamErrors(singletonMap("url", "invalid"));
         assertThat(TESTEE.equals(other)).isFalse();
     }
 
     @Test
     public void shouldHashCodeBeEqualWhenSameObjectReference() {
-        ApiErrorDetail other = newCoordinates();
+        ApiErrorDetail other = newApiErrorDetail();
         assertThat(TESTEE.hashCode()).isEqualTo(TESTEE.hashCode()).isEqualTo(other.hashCode());
     }
 
-    private static ApiErrorDetail newCoordinates() {
+    private static ApiErrorDetail newApiErrorDetail() {
         ApiErrorDetail apiErrorDetail = new ApiErrorDetail();
         apiErrorDetail.setStatusCode(500);
         apiErrorDetail.setErrorDetail("Generic error");

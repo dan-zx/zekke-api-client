@@ -24,6 +24,11 @@ public class AccessTokenHolderTest {
     private static final AccessTokenHolder TESTEE = newAccessTokenHolder();
 
     @Test
+    public void shouldGettersReturnNonNullValues() {
+        assertThat(TESTEE.getAccessToken()).isNotNull();
+    }
+
+    @Test
     public void shouldEqualsBeTrueWhenSameReference() {
         assertThat(TESTEE.equals(TESTEE)).isTrue();
     }
