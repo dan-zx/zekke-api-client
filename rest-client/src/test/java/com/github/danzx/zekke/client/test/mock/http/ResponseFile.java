@@ -15,7 +15,7 @@ public enum ResponseFile {
     WAYPOINTS("waypoints.json", HttpStatus.OK),
     POIS("pois.json", HttpStatus.OK),
     POIS_ONLY_WITH_ID_NAME("pois_id-name.json", HttpStatus.OK),
-    WALWAYS("walkways.json", HttpStatus.OK),
+    WALKWAYS("walkways.json", HttpStatus.OK),
     NO_CONTENT("empty", HttpStatus.NO_CONTENT),
     BAD_REQUEST_ERROR("bad_request_error.json", HttpStatus.BAD_REQUEST),
     AUTHORIZATION_FAILED_ERROR("authorization_error.json", HttpStatus.UNAUTHORIZED),
