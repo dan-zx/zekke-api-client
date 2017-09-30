@@ -26,7 +26,7 @@ public class ManyWaypointsHttpQuery<W extends BaseWaypoint> extends JwtAuthorize
 
     @SuppressWarnings("unchecked")
     public ManyWaypointsHttpQuery(Class<W> waypointClass, HttpClient httpClient, AccessTokenHolder tokenHolder) {
-        super(httpClient, (TypeToken<List<W>>) TypeToken.getParameterized(ArrayList.class, waypointClass).getType(), tokenHolder);
+        super(httpClient, (TypeToken<List<W>>) TypeToken.getParameterized(ArrayList.class, waypointClass), tokenHolder);
         this.waypointClass = requireNonNull(waypointClass);
         optionsBuilder = new ManyWaypointsOptions.Builder();
     }

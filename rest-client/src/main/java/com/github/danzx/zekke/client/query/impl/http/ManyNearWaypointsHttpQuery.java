@@ -26,7 +26,7 @@ public class ManyNearWaypointsHttpQuery<W extends BaseWaypoint> extends JwtAutho
 
     @SuppressWarnings("unchecked")
     public ManyNearWaypointsHttpQuery(Class<W> waypointClass, HttpClient httpClient, Coordinates location, AccessTokenHolder tokenHolder) {
-        super(httpClient, (TypeToken<List<W>>) TypeToken.getParameterized(ArrayList.class, waypointClass).getType(), tokenHolder);
+        super(httpClient, (TypeToken<List<W>>) TypeToken.getParameterized(ArrayList.class, waypointClass), tokenHolder);
         this.waypointClass = requireNonNull(waypointClass);
         optionsBuilder = new ManyNearWaypointsOptions.Builder(location);
 
@@ -44,6 +44,7 @@ public class ManyNearWaypointsHttpQuery<W extends BaseWaypoint> extends JwtAutho
                 .addQueryParameter(ApiUrlParts.QueryParams.LOCATION, getLocation().toString());
         if (waypointClass == Walkway.class) urlBuilder.addPathSegment(ApiUrlParts.PathSegments.WALKWAYS);
         if (waypointClass == Poi.class) urlBuilder.addPathSegment(ApiUrlParts.PathSegments.POIS);
+        urlBuilder.addPathSegment(ApiUrlParts.PathSegments.NEAR);
         if (getDistance() != null) urlBuilder.addQueryParameter(ApiUrlParts.QueryParams.DISTANCE, getDistance().toString());
         if (getLimit() != null) urlBuilder.addQueryParameter(ApiUrlParts.QueryParams.LIMIT, getLimit().toString());
         return urlBuilder.build();

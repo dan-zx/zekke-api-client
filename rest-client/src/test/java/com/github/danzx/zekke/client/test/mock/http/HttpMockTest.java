@@ -58,4 +58,8 @@ public abstract class HttpMockTest {
     protected HttpClient getMockHttpClient() {
         return mockHttpClient;
     }
+
+    protected HttpUrl getMockServerUrl() {
+        return mockServerUrl;
+    }
 }

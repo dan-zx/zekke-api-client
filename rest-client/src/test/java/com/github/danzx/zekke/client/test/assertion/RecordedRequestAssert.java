@@ -3,18 +3,19 @@ package com.github.danzx.zekke.client.test.assertion;
 import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.Method;
 import com.github.danzx.zekke.client.test.util.Pair;
-
+import okhttp3.HttpUrl;
+import okhttp3.mockwebserver.RecordedRequest;
 import org.assertj.core.api.AbstractAssert;
-import org.assertj.core.api.StringAssert;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
-import okhttp3.mockwebserver.RecordedRequest;
-
 import static com.github.danzx.zekke.client.test.util.Pair.pairOf;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RecordedRequestAssert extends AbstractAssert<RecordedRequestAssert, RecordedRequest> {
 
@@ -24,17 +25,35 @@ public class RecordedRequestAssert extends AbstractAssert<RecordedRequestAssert,
 
     public RecordedRequestAssert hasMethod(Method method) {
         isNotNull();
-        String actualMethod = actual.getMethod();
         String expectedMethod = Objects.toString(method, null);
-        new StringAssert(actualMethod).isEqualTo(expectedMethod).overridingErrorMessage("Expected to have request's method to be <%s> but was <%s>", expectedMethod, actualMethod);
+        assertThat(actual.getMethod()).isEqualTo(expectedMethod);
         return this;
     }
 
-    public RecordedRequestAssert hasPathEndingWith(String suffix) {
+    public RecordedRequestAssert hasUrl(HttpUrl url) {
         isNotNull();
-        String actualPath = actual.getPath();
-        new StringAssert(actualPath).endsWith(suffix).overridingErrorMessage("Expected to have request's path to end with <%s> but was <%s>", suffix, actualPath);
+        HttpUrl actualUrl = actual.getRequestUrl();
+        assertPath(actualUrl, url);
+        assertQuery(actualUrl, url);
         return this;
+    }
+
+    private void assertPath(HttpUrl actualUrl, HttpUrl expectedUrl) {
+        assertThat(actualUrl.encodedPath()).isEqualTo(expectedUrl.encodedPath());
+    }
+
+    private void assertQuery(HttpUrl actualUrl, HttpUrl expectedUrl) {
+        Map<String, List<String>> actualParams = convertHttpUrlQueryToMap(actualUrl);
+        Map<String, List<String>> expectedParams = convertHttpUrlQueryToMap(expectedUrl);
+        assertThat(actualParams).hasSameSizeAs(expectedParams).isEqualTo(expectedParams);
+    }
+
+    private Map<String, List<String>> convertHttpUrlQueryToMap(HttpUrl url) {
+        Map<String, List<String>> params = new HashMap<>();
+        for (String paramName : url.queryParameterNames()) {
+            params.put(paramName, url.queryParameterValues(paramName));
+        }
+        return params;
     }
 
     @SafeVarargs
