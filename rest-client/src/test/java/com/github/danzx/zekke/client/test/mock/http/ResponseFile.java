@@ -1,11 +1,11 @@
 package com.github.danzx.zekke.client.test.mock.http;
 
+import java.util.concurrent.TimeUnit;
+
 import com.github.danzx.zekke.client.http.ContentType;
 import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpStatus;
 import com.github.danzx.zekke.client.test.util.Files;
-
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.mockwebserver.MockResponse;
 

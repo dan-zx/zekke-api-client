@@ -1,9 +1,9 @@
 package com.github.danzx.zekke.client.util;
 
-import org.junit.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.failBecauseExceptionWasNotThrown;
+
+import org.junit.Test;
 
 public class Base64Test {
 

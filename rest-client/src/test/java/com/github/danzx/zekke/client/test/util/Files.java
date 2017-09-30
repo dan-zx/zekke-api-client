@@ -1,11 +1,11 @@
 package com.github.danzx.zekke.client.test.util;
 
+import static java.util.Objects.requireNonNull;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import static java.util.Objects.requireNonNull;
 
 public class Files {
 

@@ -1,13 +1,13 @@
 package com.github.danzx.zekke.client.test.mock.http;
 
+import java.util.concurrent.TimeUnit;
+
 import com.github.danzx.zekke.client.http.HttpClient;
 
 import org.junit.After;
 import org.junit.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;

@@ -1,11 +1,8 @@
 package com.github.danzx.zekke.client.test.assertion;
 
-import com.github.danzx.zekke.client.http.Header;
-import com.github.danzx.zekke.client.http.Method;
-import com.github.danzx.zekke.client.test.util.Pair;
-import okhttp3.HttpUrl;
-import okhttp3.mockwebserver.RecordedRequest;
-import org.assertj.core.api.AbstractAssert;
+import static com.github.danzx.zekke.client.test.util.Pair.pairOf;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,8 +11,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import static com.github.danzx.zekke.client.test.util.Pair.pairOf;
-import static org.assertj.core.api.Assertions.assertThat;
+import com.github.danzx.zekke.client.http.Header;
+import com.github.danzx.zekke.client.http.Method;
+import com.github.danzx.zekke.client.test.util.Pair;
+
+import org.assertj.core.api.AbstractAssert;
+
+import okhttp3.HttpUrl;
+import okhttp3.mockwebserver.RecordedRequest;
 
 public class RecordedRequestAssert extends AbstractAssert<RecordedRequestAssert, RecordedRequest> {
 

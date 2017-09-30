@@ -1,6 +1,9 @@
 package com.github.danzx.zekke.client.query.impl.http;
 
-import com.google.gson.reflect.TypeToken;
+import static java.util.Objects.requireNonNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
 import com.github.danzx.zekke.client.core.model.BaseWaypoint;
@@ -11,13 +14,10 @@ import com.github.danzx.zekke.client.http.HttpClient;
 import com.github.danzx.zekke.client.query.ManyNearWaypointsOptions;
 import com.github.danzx.zekke.client.query.Query;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.gson.reflect.TypeToken;
 
 import okhttp3.HttpUrl;
 import okhttp3.Request;
-
-import static java.util.Objects.requireNonNull;
 
 public class ManyNearWaypointsHttpQuery<W extends BaseWaypoint> extends JwtAuthorizedHttpQuery<List<W>> implements ManyNearWaypointsOptions, Query<List<W>> {
 

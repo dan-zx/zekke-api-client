@@ -1,10 +1,10 @@
 package com.github.danzx.zekke.client.query.impl.http;
 
-import com.google.gson.reflect.TypeToken;
-
 import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
 import com.github.danzx.zekke.client.core.model.TypedWaypoint;
 import com.github.danzx.zekke.client.http.HttpClient;
+
+import com.google.gson.reflect.TypeToken;
 
 import okhttp3.HttpUrl;
 import okhttp3.Request;

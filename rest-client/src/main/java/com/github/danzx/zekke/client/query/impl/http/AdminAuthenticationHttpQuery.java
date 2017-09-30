@@ -1,13 +1,13 @@
 package com.github.danzx.zekke.client.query.impl.http;
 
+import static java.util.Objects.requireNonNull;
+
 import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpClient;
 import com.github.danzx.zekke.client.util.Base64;
 
 import okhttp3.HttpUrl;
 import okhttp3.Request;
-
-import static java.util.Objects.requireNonNull;
 
 public class AdminAuthenticationHttpQuery extends AuthenticationHttpQuery {
 

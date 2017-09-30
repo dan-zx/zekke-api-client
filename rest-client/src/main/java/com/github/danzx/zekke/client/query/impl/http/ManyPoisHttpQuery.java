@@ -1,13 +1,13 @@
 package com.github.danzx.zekke.client.query.impl.http;
 
+import java.util.List;
+
 import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
 import com.github.danzx.zekke.client.core.model.BoundingBox;
 import com.github.danzx.zekke.client.core.model.Poi;
 import com.github.danzx.zekke.client.http.HttpClient;
 import com.github.danzx.zekke.client.query.ManyPoisOptions;
 import com.github.danzx.zekke.client.query.Query;
-
-import java.util.List;
 
 import okhttp3.HttpUrl;
 

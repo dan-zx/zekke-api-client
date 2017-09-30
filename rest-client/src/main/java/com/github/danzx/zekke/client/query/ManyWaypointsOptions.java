@@ -1,8 +1,8 @@
 package com.github.danzx.zekke.client.query;
 
-import com.github.danzx.zekke.client.core.model.BoundingBox;
-
 import static java.util.Objects.requireNonNull;
+
+import com.github.danzx.zekke.client.core.model.BoundingBox;
 
 public interface ManyWaypointsOptions {
 

@@ -1,5 +1,15 @@
 package com.github.danzx.zekke.client;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonMap;
+
+import static com.github.danzx.zekke.client.test.assertion.ProjectAssertions.assertThat;
+import static com.github.danzx.zekke.client.test.assertion.ProjectAssertions.failBecauseExceptionWasNotThrown;
+import static com.github.danzx.zekke.client.test.util.Pair.pairOf;
+
+import java.util.List;
+import java.util.Map;
+
 import com.github.danzx.zekke.client.core.exception.ApiErrorDetail;
 import com.github.danzx.zekke.client.core.exception.ApiException;
 import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
@@ -22,22 +32,16 @@ import com.github.danzx.zekke.client.query.impl.http.ManyWaypointsHttpQuery;
 import com.github.danzx.zekke.client.test.mock.http.HttpMockTest;
 import com.github.danzx.zekke.client.test.mock.http.ResponseFile;
 import com.github.danzx.zekke.client.util.Charset;
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-import okhttp3.HttpUrl;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.RecordedRequest;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.List;
-import java.util.Map;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 
-import static com.github.danzx.zekke.client.test.assertion.ProjectAssertions.assertThat;
-import static com.github.danzx.zekke.client.test.assertion.ProjectAssertions.failBecauseExceptionWasNotThrown;
-import static com.github.danzx.zekke.client.test.util.Pair.pairOf;
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonMap;
+import okhttp3.HttpUrl;
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.RecordedRequest;
 
 @RunWith(JUnitParamsRunner.class)
 public class ZekkeHttpApiClientTest extends HttpMockTest {

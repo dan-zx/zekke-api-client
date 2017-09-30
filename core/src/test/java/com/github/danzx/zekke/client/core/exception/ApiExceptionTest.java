@@ -15,10 +15,11 @@
  */
 package com.github.danzx.zekke.client.core.exception;
 
-import org.junit.Test;
-
 import static java.util.Collections.singletonMap;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.Test;
 
 public class ApiExceptionTest {
 

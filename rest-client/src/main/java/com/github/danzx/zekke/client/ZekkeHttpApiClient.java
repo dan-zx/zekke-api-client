@@ -1,5 +1,7 @@
 package com.github.danzx.zekke.client;
 
+import static java.util.Objects.requireNonNull;
+
 import com.github.danzx.zekke.client.core.model.Coordinates;
 import com.github.danzx.zekke.client.core.model.Poi;
 import com.github.danzx.zekke.client.core.model.TypedWaypoint;
@@ -11,8 +13,6 @@ import com.github.danzx.zekke.client.query.impl.http.ManyNearWaypointsHttpQuery;
 import com.github.danzx.zekke.client.query.impl.http.ManyPoisHttpQuery;
 import com.github.danzx.zekke.client.query.impl.http.ManyWaypointsHttpQuery;
 import com.github.danzx.zekke.client.query.impl.http.OneWaypointHttpQuery;
-
-import static java.util.Objects.requireNonNull;
 
 public class ZekkeHttpApiClient extends BaseZekkeApiClient {
 

@@ -1,14 +1,14 @@
 package com.github.danzx.zekke.client.query.impl.http;
 
-import com.google.gson.reflect.TypeToken;
+import static java.util.Objects.requireNonNull;
 
 import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
 import com.github.danzx.zekke.client.http.Header;
 import com.github.danzx.zekke.client.http.HttpClient;
 
-import okhttp3.Request;
+import com.google.gson.reflect.TypeToken;
 
-import static java.util.Objects.requireNonNull;
+import okhttp3.Request;
 
 abstract class JwtAuthorizedHttpQuery<R> extends HttpQuery<R> {
 

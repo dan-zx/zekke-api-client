@@ -1,8 +1,8 @@
 package com.github.danzx.zekke.client;
 
-import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
-
 import static java.util.Objects.requireNonNull;
+
+import com.github.danzx.zekke.client.core.model.AccessTokenHolder;
 
 public abstract class BaseZekkeApiClient implements ZekkeApiClient {
 
