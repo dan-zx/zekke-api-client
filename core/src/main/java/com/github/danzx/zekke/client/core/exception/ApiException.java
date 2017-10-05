@@ -27,7 +27,7 @@ public class ApiException extends RuntimeException {
     private final ApiErrorDetail apiErrorDetail;
 
     public ApiException(ApiErrorDetail apiErrorDetail) {
-        super(apiErrorDetail.getErrorDetail());
+        super(apiErrorDetail == null ? null : apiErrorDetail.getErrorDetail());
         this.apiErrorDetail = apiErrorDetail;
     }
 
