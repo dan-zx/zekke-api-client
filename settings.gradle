@@ -1,2 +1,1 @@
-include 'core', 'rest-client'
-
+include 'core', 'api', 'rest-client'
