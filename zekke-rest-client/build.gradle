@@ -1,0 +1,20 @@
+ext {
+    groovyVersion  = '2.4.12'
+    gsonVersion    = '2.8.1'
+    logbackVersion = '1.2.3'
+    okHttpVersion  = '3.8.1'
+    slf4jVersion   = '1.7.25'
+}
+
+dependencies {
+    compile project(':zekke-client-api')
+    compile "com.google.code.gson:gson:${gsonVersion}"
+    compile "com.squareup.okhttp3:okhttp:${okHttpVersion}"
+    compile "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}"
+    compile "org.slf4j:slf4j-api:${slf4jVersion}"
+
+    testCompile "com.squareup.okhttp3:mockwebserver:${okHttpVersion}"
+    testRuntime "ch.qos.logback:logback-classic:${logbackVersion}"
+    testRuntime "org.codehaus.groovy:groovy:${groovyVersion}"
+    testRuntime "org.slf4j:jul-to-slf4j:${slf4jVersion}"
+}

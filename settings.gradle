@@ -1,1 +1,1 @@
-include 'core', 'api', 'rest-client'
+include 'zekke-client-core', 'zekke-client-api', 'zekke-rest-client'
